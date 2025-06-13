@@ -7,4 +7,5 @@ class Friend:
         self.surnameFr = surnameFriend
 
     def tell(self, ):
-        print("моего друга зовут ", self.nameFr, "фамилия друга ", self.surnameFr)
+        print("моего друга зовут ", self.nameFr,
+              "фамилия друга ", self.surnameFr)

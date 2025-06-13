@@ -11,4 +11,3 @@ class Product:
 
     def get_info(self):
         return f"Product: {self.productName}, Price: {self.cost}"
-    
