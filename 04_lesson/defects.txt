@@ -1,0 +1,33 @@
+1. Функция contains.
+Нужна доработка функции:
+
+def contains(self, string: str, symbol: str) -> bool:
+res = False
+        try:
+            res = string.index(symbol) > -1
+        except ValueError:
+            pass
+
+        return res
+
+Фактический результат:
+Нет обработки других типов данных, кроме string. При вводе чисел тест падает
+
+Ожидаемый результат:
+Есть обработка разных типов данных
+
+
+2.Функция delete.
+
+Также нужна доработка данной функции, потому как она обращается к contains
+
+def delete_symbol(self, string: str, symbol: str) -> str:
+        if self.contains(string, symbol):
+            string = string.replace(symbol, "")
+        return string
+
+Фактический результат:
+Нет обработки разных типов данных и обработки ошибок
+
+Ожидаемый результат:
+Функция обрабатывает ввод разных типов данных и тесты не падают
