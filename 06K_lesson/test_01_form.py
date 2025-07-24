@@ -6,7 +6,6 @@
 # 3.Нажмите кнопку Submit.
 # 4.Проверьте (assert), что поле Zip code  подсвечено красным.
 # 5.Проверьте (assert), что остальные поля подсвечены зеленым.
-# from time import sleep
 
 from selenium import webdriver
 from selenium.webdriver.edge.service import Service as EdgeService
@@ -23,25 +22,24 @@ service = EdgeService(
 driver = webdriver.Edge(service=service, options=options)
 
 
-def check_field_color(driver, element, expected_color):
-    WebDriverWait(driver, 10).until(
-        lambda driver: element.value_of_css_property(
-            'background-color') != 'rgba(0, 0, 0, 0)')
-
-    color = element.value_of_css_property('background-color')
-    if expected_color == "red":
-        assert "rgba(248, 215, 218, 1)" in color, (
-            f"Ожидался красный цвет, получен {color}")
-    elif expected_color == "green":
-        assert "rgba(209, 231, 221, 1)" in color, (
-            f"Ожидался зеленый цвет, получен {color}")
-
-
 def test_form():
 
     driver.maximize_window()
     driver.get(
         "https://bonigarcia.dev/selenium-webdriver-java/data-types.html")
+
+    def check_field_color(driver, element, expected_color):
+        WebDriverWait(driver, 10).until(
+            lambda driver: element.value_of_css_property(
+                'background-color') != 'rgba(0, 0, 0, 0)')
+
+        color = element.value_of_css_property('background-color')
+        if expected_color == "red":
+            assert "rgba(248, 215, 218, 1)" in color, (
+                f"Ожидался красный цвет, получен {color}")
+        elif expected_color == "green":
+            assert "rgba(209, 231, 221, 1)" in color, (
+                f"Ожидался зеленый цвет, получен {color}")
 
     (driver.find_element(By.CSS_SELECTOR, "[name=first-name]")
      .send_keys("Иван"))
@@ -102,4 +100,4 @@ def test_form():
     check_field_color(driver, company, "green")
 
 
-driver.quit()
+    driver.quit()
