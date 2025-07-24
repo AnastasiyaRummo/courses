@@ -69,35 +69,20 @@ def test_form():
             )
     submit.click()
 
-    zip_code = driver.find_element(By.ID, "zip-code")
-    check_field_color(driver, zip_code, "red")
+    check_fields = [
+        (driver.find_element(By.ID, "zip-code"), "red"),
+        (driver.find_element(By.ID, "first-name"), "green"),
+        (driver.find_element(By.ID, "last-name"), "green"),
+        (driver.find_element(By.ID, "address"), "green"),
+        (driver.find_element(By.ID, "e-mail"), "green"),
+        (driver.find_element(By.ID, "phone"), "green"),
+        (driver.find_element(By.ID, "city"), "green"),
+        (driver.find_element(By.ID, "country"), "green"),
+        (driver.find_element(By.ID, "job-position"), "green"),
+        (driver.find_element(By.ID, "company"), "green")
+    ]
 
-    first_name = driver.find_element(By.ID, "first-name")
-    check_field_color(driver, first_name, "green")
-
-    last_name = driver.find_element(By.ID, "last-name")
-    check_field_color(driver, last_name, "green")
-
-    address = driver.find_element(By.ID, "address")
-    check_field_color(driver, address, "green")
-
-    email = driver.find_element(By.ID, "e-mail")
-    check_field_color(driver, email, "green")
-
-    phone_number = driver.find_element(By.ID, "phone")
-    check_field_color(driver, phone_number, "green")
-
-    city = driver.find_element(By.ID, "city")
-    check_field_color(driver, city, "green")
-
-    country = driver.find_element(By.ID, "country")
-    check_field_color(driver, country, "green")
-
-    job_position = driver.find_element(By.ID, "job-position")
-    check_field_color(driver, job_position, "green")
-
-    company = driver.find_element(By.ID, "company")
-    check_field_color(driver, company, "green")
-
+    for element, expected_color in check_fields:
+        check_field_color(driver, element, expected_color)
 
     driver.quit()
