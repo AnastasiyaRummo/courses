@@ -19,10 +19,10 @@ def driver():
 @pytest.mark.parametrize(
     "num1, operation, num2, expected_result, delay",
     [
-        ("7", "+", "8", "15", 15),
-        ("9", "-", "3", "6", 10),
-        ("4", "x", "5", "20", 20),
-        ("8", "÷", "2", "4", 5),
+        ("7", "+", "8", "15", 45),
+        ("9", "-", "3", "6", 45),
+        ("4", "x", "5", "20", 45),
+        ("8", "÷", "2", "4", 45),
     ],
 )
 @allure.title("Проверка: {num1} {operation} {num2} = {expected_result}")
@@ -47,7 +47,6 @@ def test_calculator_addition(driver, num1, operation, num2,
         calc.open()
 
     with allure.step(f"Установка задержки в {delay} секунд"):
-        delay = 45
         calc.set_delay(delay)
 
     with allure.step(f"Ввод выражения: {num1} {operation} {num2}"):
